@@ -6,7 +6,7 @@ target 'homework 14' do
   use_frameworks!
 
   # Pods for homework 14
-pod 'Alamofire'
+
  pod 'RealmSwift'
 
 end

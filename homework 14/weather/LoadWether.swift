@@ -6,57 +6,63 @@
 //
 
 import Foundation
-import Alamofire
 
 
 
-class AlamofireLoader {
 
-func alamoLoaderCity (completion: @escaping ([Welcome]) -> Void) {
+class WeatherLoader {
 
-    AF.request("https://api.openweathermap.org/data/2.5/weather?q=Moscow&lang=ru&appid=044633d225ca168a0a9163bcbf81b6aa").responseJSON { respons in
+    func load(completion: @escaping ([Welcome]) -> Void) {
 
-        guard let data = respons.data else { return }
+        let url = "https://api.openweathermap.org/data/2.5/weather?q=Moscow&lang=ru&appid=044633d225ca168a0a9163bcbf81b6aa"
+        guard let request = URL(string: url) else { return }
 
-            do {
-                let moscowWeather = try JSONDecoder().decode(Welcome.self, from: data)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            guard error == nil else { return }
 
-                let weathers: [Welcome] = [moscowWeather]
+                do {
+                    let moscowWeather = try JSONDecoder().decode(Welcome.self, from: data)
 
-                DispatchQueue.main.async {
-                    completion(weathers)
-                    
-                }
+                    let weathers: [Welcome] = [moscowWeather]
 
-                } catch let error {
-                print(error)
-                }
-    }
-}
-     
-func alamoLoaderWeek(completion: @escaping ([Week]) -> Void) {
-    
-    AF.request("https://api.openweathermap.org/data/2.5/forecast?q=Moscow&cnt=16&lang=ru&appid=87d1c1817b13e0e7a1f1439c2a17a10c")
-     .responseJSON { respons in
-        
-        guard let data = respons.data else { return }
-        
-    
-            do {
-                let weekWeather = try JSONDecoder().decode(Week.self, from: data)
+                    DispatchQueue.main.async {
 
-                let week: [Week] = [weekWeather]
-                
-                DispatchQueue.main.async {
-                    completion(week)
-                   
-                }
+                        completion(weathers)
+
+                    }
 
                 } catch let error {
-                print(error)
+                    print(error)
                 }
-     }
-    
-}
+            } .resume()
+        }
+
+
+    func weekLoad(completion: @escaping ([Week]) -> Void) {
+
+        let url = "https://api.openweathermap.org/data/2.5/forecast?q=Moscow&cnt=16&lang=ru&appid=87d1c1817b13e0e7a1f1439c2a17a10c"
+        guard let request = URL(string: url) else { return }
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            guard error == nil else { return }
+
+                do {
+                    let weekWeather = try JSONDecoder().decode(Week.self, from: data)
+
+                    let week: [Week] = [weekWeather]
+
+                    DispatchQueue.main.async {
+
+                        completion(week)
+                    }
+
+                } catch let error {
+                    print(error)
+                }
+            } .resume()
+        }
 
 }
+    

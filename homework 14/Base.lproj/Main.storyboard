@@ -269,10 +269,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="week" id="JyT-bA-p51" customClass="WeekWeatherTableViewCell" customModule="homework_14" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="210" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="210" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JyT-bA-p51" id="y0g-yi-53p">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dx-dV-J3l">
@@ -282,7 +282,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZH-3m-bgn">
-                                                    <rect key="frame" x="362" y="11.5" width="42" height="21"/>
+                                                    <rect key="frame" x="362" y="11.5" width="42" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -297,11 +297,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hZH-3m-bgn" firstAttribute="trailing" secondItem="y0g-yi-53p" secondAttribute="trailingMargin" constant="10" id="Exh-2B-b8X"/>
+                                                <constraint firstAttribute="bottom" secondItem="hZH-3m-bgn" secondAttribute="bottom" constant="11" id="VTG-Rk-bhG"/>
                                                 <constraint firstAttribute="leading" secondItem="EnE-2o-0yk" secondAttribute="trailing" constant="-331" id="Yi2-Ew-EGV"/>
                                                 <constraint firstItem="4Dx-dV-J3l" firstAttribute="centerY" secondItem="y0g-yi-53p" secondAttribute="centerY" id="cPd-3k-BFA"/>
-                                                <constraint firstItem="hZH-3m-bgn" firstAttribute="centerY" secondItem="y0g-yi-53p" secondAttribute="centerY" id="egQ-sg-NaZ"/>
                                                 <constraint firstItem="EnE-2o-0yk" firstAttribute="centerY" secondItem="y0g-yi-53p" secondAttribute="centerY" id="kRA-ds-b5E"/>
                                                 <constraint firstItem="4Dx-dV-J3l" firstAttribute="leading" secondItem="y0g-yi-53p" secondAttribute="leadingMargin" constant="10" id="kk3-lX-SUo"/>
+                                                <constraint firstItem="hZH-3m-bgn" firstAttribute="top" secondItem="y0g-yi-53p" secondAttribute="top" constant="11.5" id="lSe-Kd-14l"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Welcome: Decodable {
+
+class Welcome: Decodable {
 
     let weather: [Weather]
     let main: Main
@@ -15,7 +16,7 @@ struct Welcome: Decodable {
 
 }
 
-struct Main: Decodable {
+class Main: Decodable {
     
     let temp: Double
     let tempMin: Double
@@ -28,7 +29,7 @@ struct Main: Decodable {
     }
 }
 
-struct Weather: Decodable {
+class Weather: Decodable {
   
     let icon: String
     let weatherDescription: String

@@ -27,18 +27,18 @@ class WeatherViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        AlamofireLoader().alamoLoaderCity {
+        WeatherLoader().load {
         weathers in
             self.weather = weathers
         }
-        
-        AlamofireLoader().alamoLoaderWeek {
+
+        WeatherLoader().weekLoad {
             week in
             self.weekWeather = week
             self.TableView.reloadData()
         }
-        
-        TableView.dataSource = self
+
+       TableView.dataSource = self
     }
    
 }
