@@ -6,30 +6,30 @@
 //
 
 import Foundation
-
-
-
+import RealmSwift
 
 class WeatherLoader {
-
+    
     func load(completion: @escaping ([Welcome]) -> Void) {
 
         let url = "https://api.openweathermap.org/data/2.5/weather?q=Moscow&lang=ru&appid=044633d225ca168a0a9163bcbf81b6aa"
         guard let request = URL(string: url) else { return }
-
+                
         URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
+            guard let data = data else {return}
             guard error == nil else { return }
-
+                        
                 do {
-                    let moscowWeather = try JSONDecoder().decode(Welcome.self, from: data)
-
+                    let moscowWeather = try JSONDecoder().decode(Welcome.self, from: data )
+                    
+                   
+                            
                     let weathers: [Welcome] = [moscowWeather]
+                    
 
                     DispatchQueue.main.async {
 
                         completion(weathers)
-
                     }
 
                 } catch let error {
@@ -37,7 +37,6 @@ class WeatherLoader {
                 }
             } .resume()
         }
-
 
     func weekLoad(completion: @escaping ([Week]) -> Void) {
 
@@ -56,6 +55,7 @@ class WeatherLoader {
                     DispatchQueue.main.async {
 
                         completion(week)
+                        print(week)
                     }
 
                 } catch let error {
