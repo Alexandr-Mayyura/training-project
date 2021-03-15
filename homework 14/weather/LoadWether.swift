@@ -55,7 +55,7 @@ class WeatherLoader {
                     DispatchQueue.main.async {
 
                         completion(week)
-                        print(week)
+                        
                     }
 
                 } catch let error {

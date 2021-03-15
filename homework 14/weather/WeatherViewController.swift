@@ -20,11 +20,12 @@ class WeatherViewController: UIViewController {
     }
     
     var realm2: Realm!
-    var weekLoad: Results<Week> {
+    var weekLoad: Results<Lists> {
         get {
-            return realm2.objects(Week.self)
+            return realm2.objects(Lists.self)
         }
     }
+    
     
     var weather = [Welcome]()
     var weekWeather = [Week]()
@@ -59,8 +60,8 @@ class WeatherViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
         save()
-
         realm2 = try! Realm()
         realm = try! Realm()
     
@@ -82,7 +83,7 @@ extension WeatherViewController: UITableViewDataSource{
             if weekLoad.count > 16 {
                 return 16
             } else {
-            return weekLoad.count
+                return weekLoad.count
         }
         }
     }
@@ -100,6 +101,11 @@ extension WeatherViewController: UITableViewDataSource{
         cell.weatherLebel.text = "\(cat.weather[0].weatherDescription ?? "Error")"
             let iconURL = URL(string: "https://openweathermap.org/img/wn/\(cat.weather[0].icon ?? "14n")@2x.png")
             cell.iconImageView.loaded(url: iconURL!)
+            
+            
+            
+            
+            
             cell.maxMinLabel.text = "Макс. \(Int(cat.main!.tempMax) - 273)\u{00B0},  Мин. \(Int(cat.main!.tempMin) - 273)\u{00B0}"
 
             return cell
@@ -108,7 +114,8 @@ extension WeatherViewController: UITableViewDataSource{
 
             let newCell = TableView.dequeueReusableCell(withIdentifier: "week", for: indexPath) as! WeekWeatherTableViewCell
             
-            let cats = weekLoad[indexPath.row].list[indexPath.row]
+            let cats = weekLoad[indexPath.row]
+            
             
             newCell.degreesLabel.text = "\(Int(cats.main!.temp) - 273)\u{00B0}"
 

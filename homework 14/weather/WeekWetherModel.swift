@@ -24,6 +24,8 @@ class Week: Object, Decodable {
            case list
     }
     
+   
+    
 }
 
 class Lists: Object, Decodable {
@@ -38,23 +40,23 @@ class Lists: Object, Decodable {
            case weather
     }
     
-    convenience required init(from decoder: Decoder) throws {
-       self.init()
-
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.dt = try container.decode(Double.self, forKey: .dt)
-        self.main = try container.decode(MainClass.self, forKey: .main)
-        let kitchens = try container.decodeIfPresent([Weathers].self, forKey: .weather) ?? [Weathers()]
-        weather.append(objectsIn: kitchens)
-
-    }
+//    convenience required init(from decoder: Decoder) throws {
+//       self.init()
+//
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.dt = try container.decode(Double.self, forKey: .dt)
+//        self.main = try container.decode(MainClass.self, forKey: .main)
+//        let kitchens = try container.decodeIfPresent([Weathers].self, forKey: .weather) ?? [Weathers()]
+//        weather.append(objectsIn: kitchens)
+//
+//    }
 }
 
 class MainClass: Object, Decodable {
     @objc dynamic var temp: Double
     
     enum CodingKeys: String, CodingKey {
-       
+
         case temp
     }
 }
