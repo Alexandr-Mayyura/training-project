@@ -8,5 +8,5 @@ target 'homework 14' do
   # Pods for homework 14
 
  pod 'RealmSwift'
-
+ pod 'SDWebImage', '~> 5.0'
 end
